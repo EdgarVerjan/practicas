@@ -62,7 +62,16 @@ main:
         nop
         sub     sp, fp, #4
         @ sp needed
-        
+        pop     {fp, pc}
+.L7:
+        .align  2
+.L6:
+        .word   .LC0
+        .word   .LC1
+        .size   main, .-main
+        .ident  "GCC: (Raspbian 8.3.0-6+rpi1) 8.3.0"
+        .section        .note.GNU-stack,"",%progbits
+
         
         
 Ejercicio 2:
@@ -127,3 +136,36 @@ main:
         bl      printf
         b       .L6
 .L4:
+        ldr     r1, [fp, #-8]
+        ldr     r0, .L9+12
+        bl      printf
+        b       .L6
+.L8:
+        ldr     r1, [fp, #-8]
+        ldr     r0, .L9+16
+        bl      printf
+.L6:
+        ldr     r3, [fp, #-8]
+        add     r3, r3, #1
+        str     r3, [fp, #-8]
+.L2:
+        ldr     r3, [fp, #-8]
+        ldr     r2, .L9+20
+        cmp     r3, r2
+        ble     .L7
+        nop
+        sub     sp, fp, #4
+        @ sp needed
+        pop     {fp, pc}
+.L10:
+        .align  2
+.L9:
+        .word   1950
+        .word   1431655766
+        .word   .LC0
+        .word   .LC1
+        .word   .LC2
+        .word   2014
+        .size   main, .-main
+        .ident  "GCC: (Raspbian 8.3.0-6+rpi1) 8.3.0"
+        .section        .note.GNU-stack,"",%progbits
