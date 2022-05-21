@@ -1,6 +1,19 @@
 Nombre: Verjan Santoyo Edgar
 Numero de control: 19211750
 Ejercicio 1:
+C:
+#include<stdio.h>
+void main(void){
+int i;
+for( i=0; i<10; i++){
+if(i&1)
+        printf("%d es impar\n", i);
+else
+        printf("%d es par\n", i);
+}
+}
+
+Ensamblador:
         .arch armv6
         .eabi_attribute 28, 1
         .eabi_attribute 20, 1
@@ -75,6 +88,21 @@ main:
         
         
 Ejercicio 2:
+C:
+#include<stdio.h>
+void main(void){
+int i;
+for(i=1950; i<2015; i++){
+switch(i%3){
+case 0: printf("En %d hubo olimpiadas\n", i);
+break;
+case 2: printf("En %d hubo mundial de futbol\n", i);
+break;
+default: printf("En %d no paso nada\n", i);
+}
+}
+}
+Ensamblador:
         .arch armv6
         .eabi_attribute 28, 1
         .eabi_attribute 20, 1
